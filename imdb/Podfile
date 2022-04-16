@@ -6,6 +6,7 @@ target 'imdb' do
   use_frameworks!
 
   # Pods for imdb
+  pod 'network',              :path => '../Modules/network'
   target 'imdbTests' do
     inherit! :search_paths
     # Pods for testing
