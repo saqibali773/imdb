@@ -1,0 +1,28 @@
+PODS:
+  - Alamofire (5.4.4)
+  - AlamofireImage (4.2.0):
+    - Alamofire (~> 5.4)
+  - network (0.1.0):
+    - Alamofire
+    - AlamofireImage
+
+DEPENDENCIES:
+  - network (from `../Modules/network`)
+
+SPEC REPOS:
+  trunk:
+    - Alamofire
+    - AlamofireImage
+
+EXTERNAL SOURCES:
+  network:
+    :path: "../Modules/network"
+
+SPEC CHECKSUMS:
+  Alamofire: f3b09a368f1582ab751b3fff5460276e0d2cf5c9
+  AlamofireImage: 34a2d90b0e5fe6a5605f85ae4b7b01e784c60192
+  network: a4c2479177051e6d5fbc574c974f4471876e827a
+
+PODFILE CHECKSUM: 7a70821f7c00232fd69c66fbaf79ce8e06d2878f
+
+COCOAPODS: 1.11.0
