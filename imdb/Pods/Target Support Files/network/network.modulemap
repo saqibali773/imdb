@@ -1,6 +1,0 @@
-framework module network {
-  umbrella header "network-umbrella.h"
-
-  export *
-  module * { export * }
-}
