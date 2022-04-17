@@ -11,7 +11,7 @@ enum URLType: Equatable {
     var value: String {
         switch self {
             case .discover:
-                return "/discover/movie"
+                return "discover/movie"
             case .movie(let movieId):
                 return "movie/\(movieId)"
         }
