@@ -22,7 +22,9 @@ class MoviesRouter: NSObject, MoviesRoutingLogic, MoviesDataPassing {
     // MARK: Routing
     func routeToDetail() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let destinationVC = storyboard.instantiateViewController(withIdentifier: "PeopleDetailViewController") as! MoviesDetailViewController
+        let destinationVC = storyboard.instantiateViewController(withIdentifier: "MoviesDetailViewController") as! MoviesDetailViewController
+        MovieDetailModuleConfigurator().configureModule(for: destinationVC)
+    
         var destinationDS = destinationVC.router!.dataStore!
         passDataToSomewhere(source: dataStore!, destination: &destinationDS)
         navigateToSomewhere(source: viewController!, destination: destinationVC)
@@ -37,7 +39,7 @@ class MoviesRouter: NSObject, MoviesRoutingLogic, MoviesDataPassing {
     // MARK: Passing data
     
     func passDataToSomewhere(source: MoviesDataStore, destination: inout MoviesDetailDataStore) {
-
+        destination.selectedMovieId = source.selectedMovieId
     }
     
     

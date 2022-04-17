@@ -6,9 +6,10 @@ target 'imdb' do
   use_frameworks!
 
   # Pods for imdb
-#  pod 'network',              :path => '../Modules/network'
   pod 'Alamofire'
   pod 'AlamofireImage'
+  pod 'ParallaxHeader', '3.0.0'
+
   
   target 'imdbTests' do
     inherit! :search_paths

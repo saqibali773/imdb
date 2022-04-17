@@ -14,6 +14,11 @@ extension String {
     }
     
     func getImageURL(quality imageQuality: ImageQuality) -> String {
-        return "https://image.tmdb.org/t/p/w\(imageQuality.rawValue)\(self)"
+        switch imageQuality {
+            case .low,.high:
+                return "https://image.tmdb.org/t/p/w\(imageQuality.rawValue)\(self)"
+            case .original:
+                return "https://image.tmdb.org/t/p/\(imageQuality.rawValue)\(self)"
+        }
     }
 }

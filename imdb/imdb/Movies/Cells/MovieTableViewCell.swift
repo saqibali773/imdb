@@ -10,17 +10,6 @@ class MovieTableViewCell: UITableViewCell {
     @IBOutlet weak var movieDescriptionLabel: UILabel!
     @IBOutlet weak var shadowView: UIView!
     
-    override func setHighlighted(_ highlighted: Bool, animated: Bool) {
-        super.setHighlighted(highlighted, animated: animated)
-        
-        UIView.animate(withDuration: 0.2) {
-            if highlighted {
-                self.movieTitleLabel.textColor = UIColor.orange
-            } else {
-                self.movieTitleLabel.textColor = UIColor.black
-            }
-        }
-    }
     
     func setupCell(withModel model: Movies.Movie.ViewModel.MovieViewModel) {
         movieTitleLabel.text = model.title

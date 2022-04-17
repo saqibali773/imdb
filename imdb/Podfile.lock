@@ -2,20 +2,24 @@ PODS:
   - Alamofire (5.4.4)
   - AlamofireImage (4.2.0):
     - Alamofire (~> 5.4)
+  - ParallaxHeader (3.0.0)
 
 DEPENDENCIES:
   - Alamofire
   - AlamofireImage
+  - ParallaxHeader (= 3.0.0)
 
 SPEC REPOS:
   trunk:
     - Alamofire
     - AlamofireImage
+    - ParallaxHeader
 
 SPEC CHECKSUMS:
   Alamofire: f3b09a368f1582ab751b3fff5460276e0d2cf5c9
   AlamofireImage: 34a2d90b0e5fe6a5605f85ae4b7b01e784c60192
+  ParallaxHeader: a343f55eb38f52a89c5820a77e14cf975b84e6aa
 
-PODFILE CHECKSUM: fcd09530041ffa09437d199e10bf94787b86b05e
+PODFILE CHECKSUM: e9222233e1dea3de61ab6127dfd5e0f626a4d61d
 
 COCOAPODS: 1.11.0

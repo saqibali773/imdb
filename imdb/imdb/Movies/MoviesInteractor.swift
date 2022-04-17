@@ -9,7 +9,7 @@
 import UIKit
 
 protocol MoviesBusinessLogic {
-    func selectMovieObject(movieId: Int?)
+    func selectMovieObject(movieId: Int)
     func fetchMovies(request: Movies.Movie.Request)
 }
 
@@ -29,7 +29,7 @@ class MoviesInteractor: MoviesBusinessLogic, MoviesDataStore {
         self.worker = worker
     }
     
-    func selectMovieObject(movieId: Int?) {
+    func selectMovieObject(movieId: Int) {
         selectedMovieId = movieId
     }
     

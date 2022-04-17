@@ -14,11 +14,7 @@ enum MoviesDetail {
         struct Request {
             let movieId :Int?
         }
-        struct Response:Codable {
-        }
-        struct ViewModel {
-        }
-    
+        
         struct MovieDetailModel: Codable {
             let adult: Bool
             let backdropPath: String?
@@ -84,7 +80,6 @@ enum MoviesDetail {
             }
         }
         
-        
         struct SpokenLanguage: Codable {
             let identifier, name: String
             
@@ -93,5 +88,20 @@ enum MoviesDetail {
                 case name
             }
         }
+        
+        
+        struct ViewModel {
+            var overview: String?
+            var runtime: String?
+            var revenue: String?
+            var budget: String?
+            var title: String?
+            var posterPath: String = ""
+            var backdropPath: String = ""
+            var releaseDate: String = ""
+            var genere: String?
+            var rating: String?
+        }
+        
     }
 }

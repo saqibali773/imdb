@@ -8,24 +8,30 @@
 import UIKit
 
 protocol MoviesDetailBusinessLogic {
-    func doSomething(request: MoviesDetail.Detail.Request)
+    func fetchMovieDetail(request: MoviesDetail.Detail.Request)
 }
 
 protocol MoviesDetailDataStore {
-    //var name: String { get set }
+    var selectedMovieId: Int? { get set }
 }
 
 class MoviesDetailInteractor: MoviesDetailBusinessLogic, MoviesDetailDataStore {
+
+    var selectedMovieId: Int?
     var presenter: MoviesDetailPresentationLogic?
-    var worker: FetchingMovieDetailUsecase?
+    var worker: FetchingMovieDetailUsecase
+    
+    init(worker:FetchingMovieDetailUsecase) {
+        self.worker = worker
+    }
     
     // MARK: Do something
     
-    func doSomething(request: MoviesDetail.Detail.Request) {
-        worker?.fetchMovieDetail(request: request, completion: { result in
+    func fetchMovieDetail(request: MoviesDetail.Detail.Request) {
+        worker.fetchMovieDetail(request: request, completion: { result in
             switch result {
                 case .success(let response):
-                    self.presenter?.presentSomething(response: response)
+                    self.presenter?.presentMovieResponse(response: response)
                 case .failure(let error):
                     dump(error)
             }

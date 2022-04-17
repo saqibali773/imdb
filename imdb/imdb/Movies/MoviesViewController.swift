@@ -105,7 +105,8 @@ extension MoviesViewController:UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        interactor?.selectMovieObject(movieId: indexPath.item)
+        let movie = viewModel.movies[indexPath.row]
+        interactor?.selectMovieObject(movieId: movie.movieId)
         router?.routeToDetail()
     }
     

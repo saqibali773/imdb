@@ -8,10 +8,10 @@ import UIKit
 
 protocol FetchingMovieDetailUsecase {
     func fetchMovieDetail(request: MoviesDetail.Detail.Request,
-                           completion: @escaping (Result<MoviesDetail.Detail.Response, Error>) -> Void)
+                           completion: @escaping (Result<MoviesDetail.Detail.MovieDetailModel, Error>) -> Void)
 }
 
-class MoovieDetailWorker:FetchingMovieDetailUsecase {
+final class MovieDetailWorker:FetchingMovieDetailUsecase {
     
     let service : NetworkService
     let decoder = JSONDecoder()
@@ -20,10 +20,11 @@ class MoovieDetailWorker:FetchingMovieDetailUsecase {
         self.service = service
     }
     
-    func fetchMovieDetail(request: MoviesDetail.Detail.Request, completion: @escaping (Result<MoviesDetail.Detail.Response, Error>) -> Void) {
+    func fetchMovieDetail(request: MoviesDetail.Detail.Request, completion: @escaping (Result<MoviesDetail.Detail.MovieDetailModel, Error>) -> Void) {
         guard let movieId = request.movieId else {return}
         let networkConfig:NetworkConfig = DefaultConfig.shared
-        let url = APIUrls.getURL(for: .movie(movieId: movieId), urlConfig: networkConfig, queryItems: nil)
+        let queryParams = [ URLQueryItem(name: "api_key", value: networkConfig.imdb.apiKey)]
+        let url = APIUrls.getURL(for: .movie(movieId: movieId), urlConfig: networkConfig, queryItems: queryParams)
         let apiRequest = APIRequest(url: url, methodType: .get, params: nil)
         
         service.execute(request: apiRequest.urlRequestWithHeaders(type: .JSON)) { response in
@@ -35,7 +36,7 @@ class MoovieDetailWorker:FetchingMovieDetailUsecase {
                         return
                     }
                     do {
-                        let response = try JSONDecoder().decode(MoviesDetail.Detail.Response.self, from: jsonData)
+                        let response = try JSONDecoder().decode(MoviesDetail.Detail.MovieDetailModel.self, from: jsonData)
                         completion(.success(response))
                     } catch {
                         completion(.failure(APIError.parseError))

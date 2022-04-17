@@ -66,6 +66,7 @@ enum Movies {
             var movies:[MovieViewModel] = []
             
             struct MovieViewModel {
+                var movieId:Int
                 var title:String
                 var rating:String
                 var releaseYear:String

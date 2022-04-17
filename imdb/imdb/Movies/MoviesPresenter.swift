@@ -33,12 +33,12 @@ class MoviesPresenter: MoviesPresentationLogic,LoadingPresenterLogic {
         if let response = response {
             var viewModel   = Movies.Movie.ViewModel()
             var movies = [Movies.Movie.ViewModel.MovieViewModel]()
-            for moive in response.results {
-                let moviesViewModel = Movies.Movie.ViewModel.MovieViewModel(title: moive.originalTitle,
-                                                                            rating: "Rating: \(moive.voteAverage)",
-                                                                            releaseYear: "Year: \(moive.releaseDate)",
-                                                                            description: moive.overview,
-                                                                            posterPath: moive.backdropPath!)
+            for movie in response.results {
+                let moviesViewModel = Movies.Movie.ViewModel.MovieViewModel(movieId: movie.movieID, title: movie.originalTitle,
+                                                                            rating: "Rating: \(movie.voteAverage)",
+                                                                            releaseYear: "Year: \(movie.releaseDate)",
+                                                                            description: movie.overview,
+                                                                            posterPath: movie.backdropPath!)
                 
                 movies.append(moviesViewModel)
             }
