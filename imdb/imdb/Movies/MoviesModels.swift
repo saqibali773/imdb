@@ -23,17 +23,55 @@ enum Movies {
         
         struct Response: Codable {
             var page: Int
-            var total_pages: Int
-            var total_results: Int
-            var results: [Movie]
+            var totalPages: Int
+            var totalResults: Int
+            var results: [MovieModel]
+            
+            enum CodingKeys: String, CodingKey {
+                case page
+                case totalResults = "total_results"
+                case totalPages = "total_pages"
+                case results = "results"
+            }
         }
         
-        struct Movie: Codable {
+        struct MovieModel: Codable {
+            let voteCount: Int
+            let movieID: Int
+            let voteAverage: Double
+            let title: String
+            let popularity: Double
+            let posterPath: String?
+            let originalTitle: String
+            let backdropPath: String?
+            let overview, releaseDate: String
             
+            enum CodingKeys: String, CodingKey {
+                case voteCount = "vote_count"
+                case movieID = "id"
+                case voteAverage = "vote_average"
+                case title, popularity
+                case posterPath = "poster_path"
+                case originalTitle = "original_title"
+                case backdropPath = "backdrop_path"
+                case overview
+                case releaseDate = "release_date"
+            }
         }
         
         struct ViewModel {
+            var page: Int = 0
+            var nextPage: Int = 0
+            var shouldLoadMore : Bool = false
+            var movies:[MovieViewModel] = []
             
+            struct MovieViewModel {
+                var title:String
+                var rating:String
+                var releaseYear:String
+                var description:String
+                var posterPath:String
+            }
         }
     }
 }
