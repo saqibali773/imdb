@@ -34,15 +34,22 @@ class MoviesPresenter: MoviesPresentationLogic,LoadingPresenterLogic {
             var viewModel   = Movies.Movie.ViewModel()
             var movies = [Movies.Movie.ViewModel.MovieViewModel]()
             for movie in response.results {
+                
                 let moviesViewModel = Movies.Movie.ViewModel.MovieViewModel(movieId: movie.movieID, title: movie.originalTitle,
                                                                             rating: "Rating: \(movie.voteAverage)",
                                                                             releaseYear: "Year: \(movie.releaseDate)",
                                                                             description: movie.overview,
-                                                                            posterPath: movie.backdropPath!)
+                                                                            posterPath: movie.backdropPath ?? movie.posterPath ?? "" )
                 
                 movies.append(moviesViewModel)
             }
             viewModel.page = response.page
+            if response.page < response.totalPages {
+                viewModel.shouldLoadMore = true
+            } else {
+                viewModel.shouldLoadMore = false
+            }
+            viewModel.nextPage = response.page + 1
             viewModel.movies = movies
             viewController?.displayMovies(viewModel: viewModel)
         }
