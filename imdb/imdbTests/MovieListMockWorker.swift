@@ -22,8 +22,8 @@ class MovieListMockWorker: FetchMoviesUsecase {
                 return
             }
             let data = try Data(contentsOf: URL(fileURLWithPath: localPath))
-            let museumResponse = try JSONDecoder().decode(Movies.Movie.Response.self, from: data)
-            completion(.success(museumResponse))
+            let response = try JSONDecoder().decode(Movies.Movie.Response.self, from: data)
+            completion(.success(response))
         } catch (let error) {
             completion(.failure(error))
         }

@@ -8,7 +8,7 @@
 import XCTest
 @testable import imdb
 
-class imdbTests: XCTestCase {
+class ImdbMovieListTests: XCTestCase {
 
     var mockWorker: MovieListMockWorker!
     var presenter : MoviesPresenter!
