@@ -23,5 +23,6 @@ final class MoviesConfigurator: NSObject {
         presenter.viewController = viewController
         router.viewController = viewController
         router.dataStore = interactor
+        viewController.pageNumber = 1
     }
 }

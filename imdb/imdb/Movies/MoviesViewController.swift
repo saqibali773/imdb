@@ -25,34 +25,17 @@ class MoviesViewController: UIViewController, MoviesDisplayLogic,DisplayIndicato
     var viewModel = Movies.Movie.ViewModel()
     var interactor: MoviesBusinessLogic?
     var router: (NSObjectProtocol & MoviesRoutingLogic & MoviesDataPassing)?
-    
+    var pageNumber:Int = 0
     // MARK: Object lifecycle
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-        setup()
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        setup()
     }
     
-    // MARK: Setup
-    
-    private func setup() {
-        let viewController = self
-        let worker = MoviesWorker(service: Network())
-        let interactor = MoviesInteractor(worker: worker)
-        let presenter = MoviesPresenter()
-        let router = MoviesRouter()
-        viewController.interactor = interactor
-        viewController.router = router
-        interactor.presenter = presenter
-        presenter.viewController = viewController
-        router.viewController = viewController
-        router.dataStore = interactor
-    }
     
     // MARK: View lifecycle
     
@@ -61,7 +44,7 @@ class MoviesViewController: UIViewController, MoviesDisplayLogic,DisplayIndicato
         title = "Discover"
         hideIndicator()
         registerCell()
-        fetchMovies(page: 1)
+        fetchMovies(page: pageNumber)
     }
     
     // MARK: FetchingMovies
