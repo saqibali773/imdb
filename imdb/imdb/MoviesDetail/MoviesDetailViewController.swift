@@ -10,8 +10,8 @@ import AlamofireImage
 
 protocol MoviesDetailDisplayLogic: AnyObject {
     func setupMovieDetails(_ viewModel: MoviesDetail.Detail.ViewModel)
-    func showError(_ errorMessage: String)
     func isLoadingMovieDetail(loading status: Bool)
+    func displayError(with message:String)
 }
 
 class MoviesDetailViewController: UIViewController, MoviesDetailDisplayLogic {
@@ -88,8 +88,9 @@ class MoviesDetailViewController: UIViewController, MoviesDetailDisplayLogic {
     }
 
     
-    func showError(_ errorMessage: String) {
-        
+    func displayError(with message:String) {
+        isLoadingMovieDetail(loading: false)
+        showAlert(message: message, title: "Something went wrong")
     }
     
     func isLoadingMovieDetail(loading status: Bool) {

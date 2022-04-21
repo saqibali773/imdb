@@ -9,6 +9,7 @@ import UIKit
 
 protocol MoviesDetailPresentationLogic {
     func presentMovieResponse(response: MoviesDetail.Detail.MovieDetailModel)
+    func presentError(with error:Error)
 }
 
 class MoviesDetailPresenter: MoviesDetailPresentationLogic {
@@ -44,5 +45,17 @@ class MoviesDetailPresenter: MoviesDetailPresentationLogic {
     
     fileprivate func minutesToHoursMinutes(minutes: Int) -> (hours: Int, leftMinutes: Int) {
         return (minutes / 60, (minutes % 60))
+    }
+    
+    func presentError(with error:Error) {
+        if let error = error as? APIError,
+           let message = error.errorDescription {
+            viewController?.displayError(with: message)
+        } else{
+            if let error = error as? Network.APIError {
+                let message = error.localizedDescription
+                viewController?.displayError(with: message)
+            }
+        }
     }
 }

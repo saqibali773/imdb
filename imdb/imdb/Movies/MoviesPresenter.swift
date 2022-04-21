@@ -21,13 +21,6 @@ class MoviesPresenter: MoviesPresentationLogic,LoadingPresenterLogic {
     weak var viewController: (MoviesDisplayLogic & DisplayIndicatorLogic)?
     
     // MARK: Do something
-    
-    func presentSomething(response: Movies.Movie.Response) {
-        let viewModel = Movies.Movie.ViewModel()
-        viewController?.displayMovies(viewModel: viewModel)
-    }
-    
-    // MARK: Do something
     func presentMovies(response: Movies.Movie.Response?) {
         
         if let response = response {

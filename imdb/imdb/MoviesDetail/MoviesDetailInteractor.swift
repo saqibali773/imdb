@@ -33,7 +33,7 @@ class MoviesDetailInteractor: MoviesDetailBusinessLogic, MoviesDetailDataStore {
                 case .success(let response):
                     self.presenter?.presentMovieResponse(response: response)
                 case .failure(let error):
-                    dump(error)
+                    self.presenter?.presentError(with: error)
             }
         })
         
