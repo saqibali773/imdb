@@ -124,9 +124,7 @@ extension Network {
                 }
             }
             
-            if let json = data as? [String:Any], let errors = json["list_item"] as? [String] {
-                description = errors.first
-            } else if let json = data as? [String:Any], let error = json["message"] as? String {
+            if let json = data as? [String:Any], let error = json["status_message"] as? String {
                 description = error
             }
             guard let errorDescription = description else {

@@ -189,9 +189,9 @@
 		C41697D5280B590F00E0F3A1 /* imdb */ = {
 			isa = PBXGroup;
 			children = (
+				C4169806280B669600E0F3A1 /* Helper */,
 				C4169812280B770800E0F3A1 /* MoviesDetail */,
 				C4169811280B76F100E0F3A1 /* Movies */,
-				C4169806280B669600E0F3A1 /* Helper */,
 				C41697D6280B590F00E0F3A1 /* AppDelegate.swift */,
 				C41697DA280B590F00E0F3A1 /* ViewController.swift */,
 				C41697DC280B590F00E0F3A1 /* Main.storyboard */,

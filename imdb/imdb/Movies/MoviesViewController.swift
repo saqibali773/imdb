@@ -81,7 +81,7 @@ class MoviesViewController: UIViewController, MoviesDisplayLogic,DisplayIndicato
     func displayError(with message:String) {
         moviesTableView.reloadData()
         hideIndicator()
-        showAlert(message: message, title: "Title")
+        showAlert(message: message, title: "Something went wrong")
     }
     
     func displayIndicator() {

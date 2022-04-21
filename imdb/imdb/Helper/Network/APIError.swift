@@ -12,7 +12,7 @@ enum APIError: Error {
     public var errorDescription: String? {
         switch self {
             case .parseError:
-            return "No Search result found with this keyword, Please try with some other word."
+                return "Something went wrong please try again."
         }
     }
 }
